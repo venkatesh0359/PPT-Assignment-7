@@ -1,1 +1,19 @@
+public class StrobogrammaticNumber {
+
+    private static final String[] STROBOGLOSS = {"0", "1", "8", "6", "9"};
+
+    public static boolean isStrobogrammatic(String num) {
+        for (int i = 0; i < num.length() / 2; i++) {
+            if (!STROBOGLOSS.contains(num.charAt(i) + "" + num.charAt(num.length() - 1 - i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isStrobogrammatic("69")); // true
+        System.out.println(isStrobogrammatic("123")); // false
+    }
+}
 
