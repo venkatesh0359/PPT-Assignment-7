@@ -1,1 +1,45 @@
+public class AddStrings {
+
+  public static String addStrings(String num1, String num2) {
+    
+    List<Character> num1Digits = new ArrayList<>();
+    for (char c : num1.toCharArray()) {
+      num1Digits.add(c);
+    }
+
+    List<Character> num2Digits = new ArrayList<>();
+    for (char c : num2.toCharArray()) {
+      num2Digits.add(c);
+    }
+
+    Collections.reverse(num1Digits);
+    Collections.reverse(num2Digits);
+
+    List<Character> result = new ArrayList<>();
+
+    int carry = 0;
+    for (int i = 0; i < num1Digits.size(); i++) {
+      int sum = num1Digits.get(i) - '0' + num2Digits.get(i) - '0' + carry;
+      result.add((char) (sum % 10 + '0'));
+      carry = sum / 10;
+    }
+
+    if (carry > 0) {
+      result.add((char) (carry + '0'));
+    }
+
+    Collections.reverse(result);
+
+    return String.valueOf(result);
+  }
+
+  public static void main(String[] args) {
+    String num1 = "11";
+    String num2 = "123";
+
+    String sumString = addStrings(num1, num2);
+
+    System.out.println(sumString);
+  }
+}
 
